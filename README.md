@@ -4,4 +4,4 @@ This is a quick project which pulls marketplace data from a Minecraft server's A
 
 It also records historic prices of each item to be able to forecast trends.
 
-All this will be hosted on a simple Streamlit website to display the data in Tables and Graphs
+Currently, all data is hosted locally in a CSV file, but it will eventually be stored in a database and displayed on a simple Streamlit website. The data will be shown in tables and graphs, with pandas used to create a dataframe from the updated database content.
