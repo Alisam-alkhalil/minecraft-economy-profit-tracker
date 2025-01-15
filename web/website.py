@@ -10,7 +10,7 @@ def create_webpage(data: csv, sorted_products: list):
 
     Args:
         data (csv): The path to the csv file containing the product data.
-        sorted_products (list): A list of dictionaries, each containing the product data sorted by true_hourly_profit.
+        sorted_products (list): A list of dictionaries, each containing the up-to-date product data sorted by true_hourly_profit.
 
     Returns:
         None
