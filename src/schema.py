@@ -1,6 +1,21 @@
 import psycopg2
 
 def create_schema(host: str, port: int, user: str, password: str, dbname: str):
+    """
+    Establish a connection to a PostgreSQL database and create a table named
+    'market_data' if it does not already exist. The table contains columns for
+    storing various attributes of market data including product ID, sell price,
+    sell volume, buy price, buy volume, and other metrics related to sales and
+    profitability.
+
+    Parameters:
+    host (str): The database server host.
+    port (int): The port number for the database connection.
+    user (str): The username for authenticating with the database.
+    password (str): The password for authenticating with the database.
+    dbname (str): The name of the database to connect to.
+    """
+
     with psycopg2.connect(
         host=host,
         port=port,

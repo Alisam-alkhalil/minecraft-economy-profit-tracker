@@ -1,10 +1,20 @@
 import psycopg2
 
 def load_data(products_list: list, host: str, port: int, user: str, password: str, dbname: str):
+
     """
-    Saves the given list of product dictionaries to a csv file.
-    The file is opened in append mode, and the header is written if the file is empty.
-    This allows the same function to be used for both initial and subsequent writes.
+    Loads the given list of products into the market_data table in the
+    specified PostgreSQL database.
+
+    :param products_list: A list of product dictionaries with the same
+        structure as the return value of get_profit_data.
+    :param host: The hostname of the PostgreSQL server.
+    :param port: The port the PostgreSQL server is listening on.
+    :param user: The username to use when connecting to the PostgreSQL
+        server.
+    :param password: The password to use when connecting to the PostgreSQL
+        server.
+    :param dbname: The name of the database to use.
     """
     values = [ (
         product['productId'],
