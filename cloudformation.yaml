@@ -185,6 +185,9 @@ Resources:
         S3Key: "psycopg2.zip"         # Replace with the S3 key for the psycopg2 layer
       CompatibleRuntimes:
         - python3.12
+      CompatibleArchitectures:
+        - x86_64
+        - arm64
 
   # CloudWatch Event Rule to Trigger Lambda Every 5 Minutes
   CloudWatchEventRule:
