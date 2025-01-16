@@ -33,7 +33,7 @@ The data pipeline operates through a series of orchestrated steps, each contribu
 
 <img src="images/top_products.jpg" width="1000"/>
 
-The first section of the website displays a chart showing the most profitable items, ranked by true hourly profit. This metric considers both the maximum hourly profit and competition. Maximum hourly profit is calculated based on the lower value between total buys and sells per hour, then multiplied by the profit per item. Competition is factored in by assessing the imbalance between the number of buyers and sellers, adjusting the profit accordingly. Other key metrics include current buy and sell prices, along with the potential profit from trading each item. Flipping items in this game operates through buy and sell orders, and securing these orders is highly competitive, as many other players are pursuing the same goals. This section highlights the most worthwhile products to focus on.
+The first section of the website displays a chart showing the most profitable items, ranked by **true hourly profit**. This metric considers both the maximum hourly profit and competition. **Maximum hourly profit** is calculated based on the lower value between total buys and sells per hour, then multiplied by the profit per item. **Competition** is factored in by assessing the imbalance between the number of buyers and sellers, adjusting the profit accordingly. Other key metrics include current **buy** and **sell prices**, along with **profit per item**. Flipping items in this game operates through buy and sell orders, and securing these orders is highly competitive, as many other players are pursuing the same goals. This section highlights the most worthwhile products to focus on.
 
 
 
