@@ -76,6 +76,7 @@ Download all required packages listed in requirements.txt and place them in a py
 pip install -r requirements.txt --target=./python
 ```
 **Create ZIP Files**
+
 Zip everything except the python folder into a file named lambda_function.zip.
 
 Then, zip the python folder into a file called packages.zip.
