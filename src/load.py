@@ -18,18 +18,18 @@ def load_data(products_list: list, host: str, port: int, user: str, password: st
     """
     values = [ (
         product['productId'],
-        product['sellPrice'],
-        product['sellVolume'],
-        product['sellMovingWeek'],
-        product['sellOrders'],
-        product['buyPrice'],
-        product['buyVolume'],
-        product['buyMovingWeek'],
-        product['buyOrders'],
-        product['hourly_profit'],
-        product['competition'],
-        product['true_hourly_profit'],
-        product['profit_per_item'],
+        round(product['sellPrice'], 2),
+        round(product['sellVolume'], 2),
+        round(product['sellMovingWeek'], 2),
+        round(product['sellOrders'], 2),
+        round(product['buyPrice'], 2),
+        round(product['buyVolume'], 2),
+        round(product['buyMovingWeek'], 2),
+        round(product['buyOrders'], 2),
+        round(product['hourly_profit'], 2),
+        round(product['competition'], 2),
+        round(product['true_hourly_profit'], 2),
+        round(product['profit_per_item'], 2),   
         product['date']
         ) for product in products_list ]
 
