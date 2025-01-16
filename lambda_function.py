@@ -9,10 +9,10 @@ print("Getting Secret")
 def get_secret():
 
     """
-    Retrieves a secret from SecretsManager
-    :return: The secret, as a string
+    Retrieves a secret from SecretsManager as well as hostname from RDS Instance
     """
-    secret_name = "rds!db-f2ac396a-647d-40e6-8679-e3f09a55af7e"
+    
+    secret_name = "MyRDSSecret"
     region_name = "eu-west-1"
 
     session = boto3.session.Session()
@@ -31,20 +31,27 @@ def get_secret():
 
     secret = get_secret_value_response['SecretString']
 
-    return secret
+    rds_client = boto3.client('rds')
+    db_instance_identifier = 'mypostgresdb'
+    response = rds_client.describe_db_instances(DBInstanceIdentifier=db_instance_identifier)
+    db_instance = response['DBInstances'][0]
+    db_host = db_instance['Endpoint']['Address']
 
-print("Secret Obtained")
-secret = json.loads(get_secret())
+    return secret, db_host
+
+secret, host = get_secret()
+secret = json.loads(secret)
 
 logger = logging.getLogger()
 logging.basicConfig(level=logging.DEBUG)
 
 logger.info("Retrieving API Key")
-api_key = "405aca69-4266-474f-be27-0c6b55fdf271"
+api_key = "405aca69-4266-474f-be27-0c6b55fdf271" # Enter your API Key here
+
 logger.info("Retrieving URL")
 url = "https://api.hypixel.net/skyblock/bazaar"
 
-host = "database-2.ctaa6q06c3qp.eu-west-1.rds.amazonaws.com"
+host = host
 port = 5432
 user = secret["username"]
 password = secret["password"]
