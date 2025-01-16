@@ -43,7 +43,6 @@ aws s3api put-bucket-policy --bucket "$S3_BUCKET_NAME" --policy '{
 }'
 
 
-
 # 3. Upload files to S3
 echo "Uploading Lambda function, psycopg2 layer, and website.py to S3..."
 aws s3 cp "$LAMBDA_ZIP" "s3://$S3_BUCKET_NAME/$LAMBDA_ZIP" --region "$REGION"

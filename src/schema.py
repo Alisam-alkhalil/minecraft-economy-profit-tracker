@@ -1,4 +1,4 @@
-import psycopg2
+import psycopg
 
 def create_schema(host: str, port: int, user: str, password: str, dbname: str):
     """
@@ -16,7 +16,7 @@ def create_schema(host: str, port: int, user: str, password: str, dbname: str):
     dbname (str): The name of the database to connect to.
     """
 
-    with psycopg2.connect(
+    with psycopg.connect(
         host=host,
         port=port,
         user=user,

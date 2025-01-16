@@ -1,4 +1,4 @@
-import psycopg2
+import psycopg
 
 def load_data(products_list: list, host: str, port: int, user: str, password: str, dbname: str):
 
@@ -33,7 +33,7 @@ def load_data(products_list: list, host: str, port: int, user: str, password: st
         product['date']
         ) for product in products_list ]
 
-    with psycopg2.connect(host=host, port=port, user=user, password=password, dbname=dbname) as conn:
+    with psycopg.connect(host=host, port=port, user=user, password=password, dbname=dbname) as conn:
         cursor = conn.cursor()
         cursor.executemany("""
             INSERT INTO market_data (

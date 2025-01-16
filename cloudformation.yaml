@@ -174,15 +174,16 @@ Resources:
       Timeout: 60
       Layers:
         - !Ref LambdaLayer
+        - arn:aws:lambda:eu-west-1:770693421928:layer:Klayers-p312-psycopg:8
 
-  # Lambda Layer for psycopg2
+  # Lambda Layer for packages
   LambdaLayer:
     Type: AWS::Lambda::LayerVersion
     Properties:
-      LayerName: psycopg2-layer
+      LayerName: packages-layer
       Content:
         S3Bucket: "alisam-s3-deploy-bucket"  # Replace with your S3 bucket name
-        S3Key: "psycopg2.zip"         # Replace with the S3 key for the psycopg2 layer
+        S3Key: "packages.zip"         # Replace with the S3 key for the packages layer
       CompatibleRuntimes:
         - python3.12
       CompatibleArchitectures:

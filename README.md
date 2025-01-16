@@ -55,7 +55,7 @@ Some potential long-term features to enhance this project could include calculat
 # How to set up
 
 **AWS Account Setup**
-Ensure your AWS account is set up, and that a User role with permissions to create services is created. Then, configure your CLI to connect to AWS by running:
+Ensure your AWS account is set up, and that a User role with AdministratiorAccess permissions to create services is created. Then, configure your CLI to connect to AWS by running:
 
 ```bash
 aws configure
@@ -77,9 +77,9 @@ pip install -r requirements.txt --target=./python
 ```
 **Create ZIP Files**
 
-Zip everything except the python folder into a file named lambda_function.zip.
+Zip the **src** folder and **lambda_function.py** into a file named *lambda_function.zip*.
 
-Then, zip the python folder into a file called packages.zip.
+Then, zip the **python** folder into a file called *packages.zip*.
 
 **Deploy the Stack**
 
