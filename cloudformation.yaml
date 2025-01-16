@@ -45,6 +45,7 @@ Resources:
                 Action:
                   - secretsmanager:GetSecretValue   # Added Secrets Manager access
                   - s3:GetObject
+                  - rds:*
                 Resource: "*"
 
   EC2InstanceProfile:
@@ -210,7 +211,7 @@ Resources:
           #!/bin/bash
           yum update -y
           yum install -y python3
-          pip3 install streamlit boto3 matplotlib psycopg2-binary
+          pip3 install streamlit boto3 matplotlib psycopg2-binary urllib3==1.26.6
           cd /home/ec2-user
           wget https://alisam-s3-deploy-bucket.s3.amazonaws.com/website.py
           streamlit run website.py --server.port 8501 --server.enableCORS false

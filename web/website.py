@@ -32,7 +32,7 @@ def get_secret():
 
     secret = get_secret_value_response['SecretString']
 
-    rds_client = boto3.client('rds')
+    rds_client = boto3.client('rds', region_name=region_name)
     db_instance_identifier = 'mypostgresdb'
     response = rds_client.describe_db_instances(DBInstanceIdentifier=db_instance_identifier)
     db_instance = response['DBInstances'][0]

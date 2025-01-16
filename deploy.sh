@@ -24,6 +24,10 @@ chmod 400 "$KEY_NAME.pem"
 echo "Creating S3 Bucket: $S3_BUCKET_NAME"
 aws s3 mb "s3://$S3_BUCKET_NAME" --region "$REGION"
 
+echo "Disabling Block Public Access for S3 Bucket: $S3_BUCKET_NAME"
+aws s3api put-public-access-block --bucket "$S3_BUCKET_NAME" --public-access-block-configuration \
+    BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false
+
 echo "Setting public access policy for S3 Bucket: $S3_BUCKET_NAME"
 aws s3api put-bucket-policy --bucket "$S3_BUCKET_NAME" --policy '{
   "Version": "2012-10-17",
@@ -37,6 +41,8 @@ aws s3api put-bucket-policy --bucket "$S3_BUCKET_NAME" --policy '{
     }
   ]
 }'
+
+
 
 # 3. Upload files to S3
 echo "Uploading Lambda function, psycopg2 layer, and website.py to S3..."
