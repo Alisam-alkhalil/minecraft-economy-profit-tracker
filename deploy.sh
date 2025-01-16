@@ -4,7 +4,7 @@ set -x
 KEY_NAME="alisam-pipeline-key"  # Replace with an EC2 key pair name
 S3_BUCKET_NAME="alisam-s3-deploy-bucket" # Replace with your desired S3 bucket name
 LAMBDA_ZIP="lambda_function.zip"
-PSYCOG2_ZIP="psycopg2.zip"
+PACKAGES="packages.zip"
 WEBSITE_PY="./web/website.py"
 STACK_NAME="my-cloudformation-stack"
 REGION="eu-west-1"
@@ -47,7 +47,7 @@ aws s3api put-bucket-policy --bucket "$S3_BUCKET_NAME" --policy '{
 # 3. Upload files to S3
 echo "Uploading Lambda function, psycopg2 layer, and website.py to S3..."
 aws s3 cp "$LAMBDA_ZIP" "s3://$S3_BUCKET_NAME/$LAMBDA_ZIP" --region "$REGION"
-aws s3 cp "$PSYCOG2_ZIP" "s3://$S3_BUCKET_NAME/$PSYCOG2_ZIP"  --region "$REGION"
+aws s3 cp "$PACKAGES" "s3://$S3_BUCKET_NAME/$PACKAGES"  --region "$REGION"
 aws s3 cp "$WEBSITE_PY" "s3://$S3_BUCKET_NAME/website.py" --region "$REGION"
 
 # 4. Deploy CloudFormation Stack
