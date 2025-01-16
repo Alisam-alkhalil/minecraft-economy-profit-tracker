@@ -77,7 +77,8 @@ def create_webpage( host: str, port: int, user: str, password: str, dbname: str)
         df = pd.DataFrame(data, columns=columns)
         top_products = pd.DataFrame(top_products, columns=columns)
 
-    print(df)
+    st.set_page_config(layout="centered",page_title = "Minecraft Marketplace Profit Calculator")
+
     st.image("https://res.cloudinary.com/zenbusiness/image/upload/v1670445040/logaster/logaster-2020-06-image14-3.avif", use_column_width=True, width=300)
 
     st.title("Minecraft Marketplace Profit Calculator")
@@ -87,7 +88,7 @@ def create_webpage( host: str, port: int, user: str, password: str, dbname: str)
     top_products.rename(columns={"true_hourly_profit": "Adjusted Hourly Profit", "hourly_profit": "Max Hourly Profit", "product_id": "Product", "profit_per_item": "Profit Per Item"}, inplace=True)
     top_products = top_products[["Product","Adjusted Hourly Profit", "Max Hourly Profit", "sell_price", "buy_price", "Profit Per Item"]]
 
-    st.dataframe(top_products, width=900, height=400)
+    st.dataframe(top_products, width=1500, height=400)
 
     st.title("Buy and Sell Prices 📈")
 
@@ -97,7 +98,7 @@ def create_webpage( host: str, port: int, user: str, password: str, dbname: str)
 
     filtered_df = df[df["product_id"] == selected_product]
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(20, 12))
     plt.plot(filtered_df["date"], filtered_df["sell_price"], marker = "o", color = "red", label = "Sell Price")
     plt.xlabel("Product")
     plt.ylabel("Price")
@@ -106,7 +107,7 @@ def create_webpage( host: str, port: int, user: str, password: str, dbname: str)
     plt.legend()
     st.pyplot(plt)
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(20, 12))
     plt.plot(filtered_df["date"], filtered_df["buy_price"], marker = "o", color = "blue", label = "Buy Price")
     plt.xlabel("Product")
     plt.ylabel("Price")
