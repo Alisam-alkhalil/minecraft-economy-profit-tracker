@@ -3,7 +3,7 @@ import boto3
 import json
 from botocore.exceptions import ClientError
 from src import extract, transform, load, schema
-import logging
+
 
 print("Getting Secret")
 def get_secret():
@@ -42,13 +42,8 @@ def get_secret():
 secret, host = get_secret()
 secret = json.loads(secret)
 
-logger = logging.getLogger()
-logging.basicConfig(level=logging.DEBUG)
-
-logger.info("Retrieving API Key")
 api_key = "405aca69-4266-474f-be27-0c6b55fdf271" # Enter your API Key here
 
-logger.info("Retrieving URL")
 url = "https://api.hypixel.net/skyblock/bazaar"
 
 host = host
@@ -68,20 +63,15 @@ def lambda_handler(event, context):
     :param context: The context object passed to the AWS Lambda function
     :return: A dictionary containing the HTTP status code, status message, headers, and body
     """
-    print("Starting Lambda")
-    print("Extracting Live Data")
+
     products_list = extract.get_data(url, api_key)
 
-    print("Transforming Data")
     products_list = transform.get_profit_data(products_list)
 
-    print("Sorting Data")
     sorted_products = sorted(products_list,key = lambda x: x["true_hourly_profit"], reverse=True)
 
-    print("Creating Database")
     schema.create_schema(host, port, user, password, dbname)
 
-    print("Loading Data")
     load.load_data(sorted_products[:500], host, port, user, password, dbname)
 
     return {
