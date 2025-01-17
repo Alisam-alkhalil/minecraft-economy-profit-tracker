@@ -55,6 +55,7 @@ Some potential long-term features to enhance this project could include calculat
 # How to set up
 
 **AWS Account Setup**
+
 Ensure your AWS account is set up, and that a User role with AdministratiorAccess permissions to create services is created. Then, configure your CLI to connect to AWS by running:
 
 ```bash
@@ -63,13 +64,16 @@ aws configure
 Retrieve your credentials from your AWS user account.
 
 **Edit Configuration Files**
+
 Edit the deploy and cloudformation files to set your custom names for the S3 bucket and EC2 key name. Ensure that you change all instances of the old names in links and variables within the CloudFormation file to ensure all dependencies match.
 Alternatively, you can leave the default values as they are, and the services will be named accordingly.
 
 **API Key Setup**
+
 You will need to add your own API key in the lambda_function.py file. This can be obtained by creating an account on the Minecraft servers website. For demonstration purposes, an API key is currently included in the example.
 
 **Install Dependencies**
+
 Download all required packages listed in requirements.txt and place them in a python folder by running the following command:
 
 ```bash
@@ -91,12 +95,15 @@ While in the root directory of the repository, run:
 This will deploy the CloudFormation stack.
 
 **Handle Errors and Redeployment**
+
 If you encounter errors or need to redeploy, make sure to manually delete the S3 bucket, EC2 key pairs, .pem file created in your root directory, and VPCs on AWS. These resources will not be automatically removed when deleting the stack.
 
 **Set Up EventBridge Scheduler**
+
 Once the stack has been uploaded, you will need to manually set up the EventBridge scheduler as a trigger for the Lambda function. This is not done automatically by the CloudFormation template to avoid wasting resources unknowingly. You can set the interval to whatever you prefer (e.g., every 1 second or every 10 minutes).
 
 **Access the Website**
+
 After the first Lambda invocation, you can access the website with the data. Find your EC2 instance's public IP address and connect to it using port 8501, for example:
 
 ```bash
