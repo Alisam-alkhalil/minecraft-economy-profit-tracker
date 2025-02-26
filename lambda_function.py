@@ -42,7 +42,7 @@ def get_secret():
 secret, host = get_secret()
 secret = json.loads(secret)
 
-api_key = "405aca69-4266-474f-be27-0c6b55fdf271" # Enter your API Key here
+api_key = "405aca69-EXAMPLE-be27-EXAMPLEf271" # Enter your API Key here (This is an Example API Key)
 
 url = "https://api.hypixel.net/skyblock/bazaar"
 
